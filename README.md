@@ -15,7 +15,7 @@ Run
 $ python test_mc_compute_stationary.py
 ```
 
-or
+or something like
 
 ```sh
 $ python test_mc_compute_stationary.py --N 3 --epsilon 1e-14

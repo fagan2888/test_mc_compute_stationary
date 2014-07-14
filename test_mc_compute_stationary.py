@@ -23,7 +23,7 @@ def KMR_Markov_matrix_simultaneous(N, p, epsilon):
     N: number of players
     p: level of p-dominance for action 1
        = the value of p such that action 1 is the BR for (1-q, q) for any q > p,
-         where q (1-q, resp.) is the prob that the oppenent plays action 1 (0, resp.)
+         where q (1-q, resp.) is the prob that the opponent plays action 1 (0, resp.)
     epsilon: mutation probability
     """
     P = np.empty((N+1, N+1), dtype=float)
@@ -42,7 +42,7 @@ def KMR_Markov_matrix_sequential(N, p, epsilon):
     N: number of players
     p: level of p-dominance for action 1
        = the value of p such that action 1 is the BR for (1-q, q) for any q > p,
-         where q (1-q, resp.) is the prob that the oppenent plays action 1 (0, resp.)
+         where q (1-q, resp.) is the prob that the opponent plays action 1 (0, resp.)
     epsilon: mutation probability
     """
     P = np.zeros((N+1, N+1), dtype=float)

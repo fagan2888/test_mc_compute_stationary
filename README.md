@@ -21,6 +21,9 @@ or something like
 $ python test_mc_compute_stationary.py --N 3 --epsilon 1e-14
 ```
 
+
+## IPython Notebooks
+
 * [Outcome 1](http://nbviewer.ipython.org/github/oyamad/test_mc_compute_stationary/blob/master/test_mc_compute_stationary_2_7_6.ipynb):
   Python 2.7.6 (installed via Homebrew) on Mac OS X 10.6.8 (Snow Leopard)
 * [Outcome 2](http://nbviewer.ipython.org/github/oyamad/test_mc_compute_stationary/blob/master/test_mc_compute_stationary_2_7_6_anaconda.ipynb):

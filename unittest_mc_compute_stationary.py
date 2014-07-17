@@ -1,5 +1,5 @@
 """
-Filename: test_mc_compute_stationary_unittest.py
+Filename: unittest_test_mc_compute_stationary.py
 Author: Daisuke Oyama
 
 Unittest for mc_compute_stationary in mc_tools.py from quantecon

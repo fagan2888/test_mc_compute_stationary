@@ -1,7 +1,7 @@
 test_mc_compute_stationary
 ==========================
 
-Nose test `mc_compute_stationary`
+Nose test for `mc_compute_stationary`
 in [mc_tools.py](https://github.com/jstac/quant-econ/blob/master/quantecon/mc_tools.py)
 from [quantecon](https://github.com/jstac/quant-econ)
 

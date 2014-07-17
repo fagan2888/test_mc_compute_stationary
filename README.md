@@ -31,6 +31,11 @@ $ nosetests -v -s
   Python 2.7.6 (installed via Homebrew) on Mac OS X 10.6.8 (Snow Leopard)
 * [Outcome 2](http://nbviewer.ipython.org/github/oyamad/test_mc_compute_stationary/blob/master/test_mc_compute_stationary_2_7_6_anaconda.ipynb):
   Python 2.7.6 in Anaconda on Mac OS X 10.9.4 (Marvericks)
+* [Outcome 3](http://nbviewer.ipython.org/github/oyamad/test_mc_compute_stationary/blob/master/test_mc_compute_stationary_2_7_8.ipynb):
+  Python 2.7.8 (installed via Homebrew) on Mac OS X 10.9.4 (Snow Leopard)
+
+Outputs in general differ across different environment,
+while for some cases, 1 and 3 yield exactly the same outputs.
 
 
 unittest_mc_compute_stationary.py

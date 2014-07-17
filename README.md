@@ -18,10 +18,16 @@ Run
 $ python test_mc_compute_stationary.py
 ```
 
-or something like
+or with parameter values,
 
 ```sh
-$ python test_mc_compute_stationary.py --N 3 --epsilon 1e-14
+$ python test_mc_compute_stationary.py --N=3 --epsilon=1e-14
+```
+
+or
+
+```sh
+$ python test_mc_compute_stationary.py --move='simultaneous' --N=5 --epsilon=1e-15
 ```
 
 

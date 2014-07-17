@@ -32,9 +32,9 @@ $ nosetests -v -s
 * [Outcome 2](http://nbviewer.ipython.org/github/oyamad/test_mc_compute_stationary/blob/master/test_mc_compute_stationary_2_7_6_anaconda.ipynb):
   Python 2.7.6 in Anaconda on Mac OS X 10.9.4 (Marvericks)
 * [Outcome 3](http://nbviewer.ipython.org/github/oyamad/test_mc_compute_stationary/blob/master/test_mc_compute_stationary_2_7_8.ipynb):
-  Python 2.7.8 (installed via Homebrew) on Mac OS X 10.9.4 (Snow Leopard)
+  Python 2.7.8 (installed via Homebrew) on Mac OS X 10.9.4 (Marvericks)
 
-Outputs in general differ across different environment,
+The outputs in general differ across different environment,
 while for some cases, 1 and 3 yield exactly the same outputs.
 
 
@@ -51,7 +51,7 @@ Run
 $ python unittest_mc_compute_stationary.py
 ```
 
-or with parameter values,
+or with parameter values, for example,
 
 ```sh
 $ python unittest_mc_compute_stationary.py --N=3 --epsilon=1e-14

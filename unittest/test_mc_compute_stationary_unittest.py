@@ -1,8 +1,8 @@
 """
-Filename: test_mc_compute_stationary.py
+Filename: test_mc_compute_stationary_unittest.py
 Author: Daisuke Oyama
 
-Nose test for mc_compute_stationary in mc_tools.py from quantecon
+Unittest for mc_compute_stationary in mc_tools.py from quantecon
 
 Input Markov matrices defined by the Kandori-Mailath-Rob model with
 - two actions (0 and 1),
@@ -13,34 +13,32 @@ Input Markov matrices defined by the Kandori-Mailath-Rob model with
 References
 ----------
 
-    https://github.com/oyamad/test_mc_compute_stationary
+    https://github.com/oyamad/test_mc_compute_stationary/unittest
 
 """
 
 from __future__ import division
 
 import sys
+import os
 import argparse
 import numpy as np
 from scipy.stats import binom
 import unittest
-import nose
-from nose.tools import ok_, eq_
+
+sys.path.append(os.pardir)
 from mc_tools import mc_compute_stationary
 
 
-# Sets of parameter values
-pvalues_list = [
-                {'N': 27, 'epsilon': 1e-2, 'move': 'sequential'},
-                {'N': 3, 'epsilon': 1e-14, 'move': 'sequential'},
-                {'N': 5, 'epsilon': 1e-15, 'move': 'simultaneous'}
-                ]
+# Default parameter values
+default_N, default_epsilon = 27, 1e-2
+default_p = 1/3  # action 1 is risk-dominant
 
-# Value of p-dominance of action 1
-p = 1/3  # action 1 is risk-dominant
+# Default move: 'sequential' or 'simultaneous'
+default_move = 'sequential'
 
 # Tolerance level
-TOL = 1e-2
+default_TOL = 1e-2
 
 
 def KMR_Markov_matrix_simultaneous(N, p, epsilon):
@@ -119,56 +117,64 @@ def KMR_Markov_matrix_sequential(N, p, epsilon):
     return P
 
 
-def test_compute_stationary():
-    for i, pvalues in enumerate(pvalues_list):
-        if pvalues['move'] == 'simultaneous':
-            P = KMR_Markov_matrix_simultaneous(pvalues['N'], p, pvalues['epsilon'])
-        else:
-            P = KMR_Markov_matrix_sequential(pvalues['N'], p, pvalues['epsilon'])
-        v = mc_compute_stationary(P)
+class TestComputeStationary(unittest.TestCase):
+    def setUp(self):
+        self.P, self.v = P, v
 
-        print '===='
-        print 'Testing with prameter values set %d\n' % i
-        print 'N =', pvalues['N'], ', epsilon =', pvalues['epsilon'], ', move =', pvalues['move'], '\n'
-        if pvalues['N'] <= 5:
-            print 'P =\n', P, '\n'
-        print 'v =\n', v, '\n'
-        print 'TOL =', TOL, '\n'
+    def test_markov_matrix(self):
+        for i in range(len(self.P)):
+            self.assertEqual(sum(self.P[i, :]), 1)
 
-        yield MarkovMatrix(), P
-        yield SumOne(), v
-        yield Nonnegative(), v
-        yield LeftEigenVec(), P, v
+    def test_sum_one(self):
+        self.assertTrue(np.allclose(sum(self.v), 1, atol=TOL))
 
+    def test_nonnegative(self):
+        self.assertEqual(np.prod(self.v >= 0-TOL), 1)
 
-class MarkovMatrix:
-    def __init__(self):
-        self.description = 'Elements in each row of P sum to one'
-    def __call__(self, P):
-        for i in range(len(P)):
-            eq_(sum(P[i, :]), 1)
+    def test_left_eigen_vec(self):
+        self.assertTrue(np.allclose(np.dot(self.v, self.P), self.v, atol=TOL))
 
-class SumOne:
-    def __init__(self):
-        self.description = 'Elements of v sum to one'
-    def __call__(self, v):
-        ok_(np.allclose(sum(v), 1, atol=TOL))
-
-class Nonnegative:
-    def __init__(self):
-        self.description = 'All the elements of v are nonnegative'
-    def __call__(self, v):
-        eq_(np.prod(v >= 0-TOL), 1)
-
-class LeftEigenVec:
-    def __init__(self):
-        self.description = 'v is a left eigen vector'
-    def __call__(self, P, v):
-        ok_(np.allclose(np.dot(v, P), v, atol=TOL))
+    def tearDown(self):
+        pass
 
 
 if __name__ == '__main__':
-    argv = sys.argv[:]
-    argv.append('--verbose')
-    argv.append('--nocapture')
-    nose.main(argv=argv)
+    parser = argparse.ArgumentParser(description='Unittest for mc_compute_stationary.')
+    parser.add_argument(
+        "--N", dest='N', type=int, action='store', default=default_N,
+        metavar='N', help=u'N = number of players'
+        )
+    parser.add_argument(
+        "--epsilon", dest='epsilon', type=float, action='store', default=default_epsilon,
+        metavar='epsilon', help=u'epsilon = mutation probability'
+        )
+    parser.add_argument(
+        "--p", dest='p', action='store', default=default_p,
+        metavar='p', help=u'p = level of p-dominance of action 1'
+        )
+    parser.add_argument(
+        "--tolerance", type=float, dest='tol', action='store', default=default_TOL,
+        metavar='tol', help=u'tol = tolerance'
+        )
+    parser.add_argument(
+        "--move", dest='move', action='store', default=default_move,
+        help=u'\'sequential\' (default) or \'simulataneous\''
+        )
+    args = parser.parse_args()
+
+    if args.move == 'simultaneous':
+        P = KMR_Markov_matrix_simultaneous(N=args.N, p=args.p, epsilon=args.epsilon)
+    else:
+        P = KMR_Markov_matrix_sequential(N=args.N, p=args.p, epsilon=args.epsilon)
+    v = mc_compute_stationary(P)
+    TOL = args.tol
+
+    print 'N =', args.N, ', epsilon =', args.epsilon, '\n'
+
+    if args.N <= 5:
+        print 'P =\n', P, '\n'
+    print 'v =\n', v, '\n'
+    print 'TOL =', TOL, '\n'
+
+    suite = unittest.TestLoader().loadTestsFromTestCase(TestComputeStationary)
+    unittest.TextTestRunner(verbosity=2, stream=sys.stderr).run(suite)

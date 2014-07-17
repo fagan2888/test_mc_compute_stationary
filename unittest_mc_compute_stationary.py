@@ -13,20 +13,17 @@ Input Markov matrices defined by the Kandori-Mailath-Rob model with
 References
 ----------
 
-    https://github.com/oyamad/test_mc_compute_stationary/unittest
+    https://github.com/oyamad/test_mc_compute_stationary
 
 """
 
 from __future__ import division
 
 import sys
-import os
 import argparse
 import numpy as np
 from scipy.stats import binom
 import unittest
-
-sys.path.append(os.pardir)
 from mc_tools import mc_compute_stationary
 
 

@@ -35,7 +35,7 @@ def mc_compute_stationary_sympy(P, tol=1e-10):
     # output = (eigenvalue, algebraic multiplicity, [eigenvectors])
     for output in outputs:
         if output[0] > 1 - tol:
-            eigenvecs.append(output[2])
+            eigenvecs.extend(output[2])
 
     # type(eigenvec): sympy.matrices.dense.MutableDenseMatrix
     ndarray_eigenvecs = \

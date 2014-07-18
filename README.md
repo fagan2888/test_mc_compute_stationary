@@ -72,3 +72,12 @@ $ python unittest_mc_compute_stationary.py --move='simultaneous' --N=5 --epsilon
   Python 2.7.6 in Anaconda on Mac OS X 10.9.4 (Marvericks)
 * [Outcome 3](http://nbviewer.ipython.org/github/oyamad/test_mc_compute_stationary/blob/master/unittest_mc_compute_stationary_2_7_8.ipynb):
   Python 2.7.8 (installed via Homebrew) on Mac OS X 10.9.4 (Marvericks)
+
+
+mc_compute_stationary_sympy.py
+==============================
+
+Using `Matrix.eigenvects()` from `SymPy`,
+it returns (computed) eigenvectors whose (computed) eigenvalues are close to 1.
+
+* [Demonstaration](http://nbviewer.ipython.org/github/oyamad/test_mc_compute_stationary/blob/master/mc_compute_stationary_sympy_demo.ipynb)

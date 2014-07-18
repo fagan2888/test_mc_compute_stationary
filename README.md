@@ -80,4 +80,4 @@ mc_compute_stationary_sympy.py
 Using `Matrix.eigenvects()` from `SymPy`,
 it returns (computed) eigenvectors whose (computed) eigenvalues are close to 1.
 
-* [Demonstaration](http://nbviewer.ipython.org/github/oyamad/test_mc_compute_stationary/blob/master/mc_compute_stationary_sympy_demo.ipynb)
+* [Demonstration](http://nbviewer.ipython.org/github/oyamad/test_mc_compute_stationary/blob/master/mc_compute_stationary_sympy_demo.ipynb)

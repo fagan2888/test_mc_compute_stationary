@@ -77,7 +77,7 @@ $ python unittest_mc_compute_stationary.py --move='simultaneous' --N=5 --epsilon
 mc_compute_stationary_sympy.py
 ==============================
 
-Using `Matrix.eigenvects()` from `SymPy`,
+Using `Matrix.eigenvects()` from [SymPy](http://sympy.org),
 it returns (computed) eigenvectors whose (computed) eigenvalues are close to 1.
 
 * [Demonstration](http://nbviewer.ipython.org/github/oyamad/test_mc_compute_stationary/blob/master/mc_compute_stationary_sympy_demo.ipynb)
@@ -88,7 +88,7 @@ In some cases, this does not work well, returning an empty list...
 mc_compute_stationary_mpmath.py
 ===============================
 
-This uses [`mpmath`](http://mpmath.org),
+This uses [mpmath](http://mpmath.org),
 which allows arbitrary precision in floating-point arithmetic.
 
 * [Main documentation](http://mpmath.org/doc/current/)

@@ -6,6 +6,7 @@ Author: Daisuke Oyama
 """
 import numpy as np
 from sympy.matrices import Matrix
+from sympy.utilities.iterables import flatten
 
 
 def mc_compute_stationary_sympy(P, tol=1e-10):
@@ -23,22 +24,27 @@ def mc_compute_stationary_sympy(P, tol=1e-10):
 
     Returns
     -------
-    ndarray_eigenvecs : list of numpy.arrays(float, ndim=1)
-        A list of the stationary distribution(s) of P
+    vals : list of sympy.core.numbers.Float
+        A list of eigenvalues of P > 1 - tol
+
+    ndarray_vects : list of numpy.arrays of sympy.core.numbers.Float
+        A list of the corresponding eigenvectors of P
 
     """
     P = Matrix(P)  # type(P): sympy.matrices.dense.MutableDenseMatrix
     outputs = P.transpose().eigenvects()  # TODO: Raise exception when empty
 
-    eigenvecs = []
+    vals = []
+    vecs = []
 
     # output = (eigenvalue, algebraic multiplicity, [eigenvectors])
     for output in outputs:
         if output[0] > 1 - tol:
-            eigenvecs.extend(output[2])
+            vals.append(output[0])
+            vecs.extend(output[2])
 
-    # type(eigenvec): sympy.matrices.dense.MutableDenseMatrix
-    ndarray_eigenvecs = \
-        [np.array(eigenvec).flatten().astype(float) for eigenvec in eigenvecs]
+    # type(vec): sympy.matrices.dense.MutableDenseMatrix
+    vecs_flattened = \
+        np.array([flatten(vec) for vec in vecs])
 
-    return [v/sum(v) for v in ndarray_eigenvecs]
+    return vals, [vec/sum(vec) for vec in vecs_flattened]

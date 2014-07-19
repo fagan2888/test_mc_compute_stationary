@@ -115,3 +115,5 @@ This seems to work very well:
 
 * [Outcome](http://nbviewer.ipython.org/github/oyamad/test_mc_compute_stationary/blob/master/test_mc_compute_stationary_mpmath.ipynb):
   Python 2.7.8 (installed via Homebrew) on Mac OS X 10.9.4 (Marvericks)
+
+Passed the tests with tolerance level 1e-17

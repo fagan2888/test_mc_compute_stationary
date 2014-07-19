@@ -103,3 +103,9 @@ This seems to work very well:
   mpmath 0.19
 
 (The outcomes yielded are exactly the same.)
+
+
+## Manual Unittest
+
+* [Outcome](http://nbviewer.ipython.org/github/oyamad/test_mc_compute_stationary/blob/master/unittest_mc_compute_stationary_mpmath.ipynb):
+  Python 2.7.8 (installed via Homebrew) on Mac OS X 10.9.4 (Marvericks)

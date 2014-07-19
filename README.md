@@ -101,3 +101,5 @@ This seems to work very well:
   sympy.mpmath 0.18
 * [Demonstration 2](http://nbviewer.ipython.org/github/oyamad/test_mc_compute_stationary/blob/master/mc_compute_stationary_mpmath_demo02.ipynb):
   mpmath 0.19
+
+(The outcomes yielded are exactly the same.)

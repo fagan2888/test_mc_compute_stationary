@@ -17,7 +17,7 @@ except ImportError:
     sys.exit(1)
 
 
-def mc_compute_stationary_mpmath(P, precision=None, tol=1e-17):
+def mc_compute_stationary_mpmath(P, precision=17, ltol=0, utol=None):
     """
     Computes the stationary distributions of Markov matrix P.
 
@@ -26,12 +26,13 @@ def mc_compute_stationary_mpmath(P, precision=None, tol=1e-17):
     P : array_like(float, ndim=2)
         A discrete Markov transition matrix
 
-    precision : scalar(int), optional
+    precision : scalar(int), optional(default: 17)
         Decimal precision in float-point arithemetic with mpmath
+        mp.mp.dps is set to precision
 
-    tol: scalar(float), optional
-        Tolerance level
-        Find eigenvectors for eigenvalues in [1-tol, 1+tol]
+    ltol, utol: scalar(float), optional(default: ltol=0, utol=inf)
+        Lower and upper tolerance levels
+        Find eigenvectors for eigenvalues in [1-ltol, 1+utol]
 
     Returns
     -------
@@ -45,28 +46,29 @@ def mc_compute_stationary_mpmath(P, precision=None, tol=1e-17):
         http://mpmath.org/doc/current/basics.html#setting-the-precision
 
     """
-    if precision:
-        tmp = mp.mp.dps  # Store the current decimal precision
-        mp.mp.dps = precision  # Set decimal precision to precision
+    # TODO: Be more "pythonic" in temporarily changing the precision
+    # See: mpmath.org/doc/current/basics.html#temporarily-changing-the-precision
+    tmp = mp.mp.dps  # Store the current decimal precision
+    mp.mp.dps = precision  # Set decimal precision to precision
 
-    TOL = str(tol)
-
-    if not isinstance(P, np.ndarray):
-        Q = np.empty([len(P), len(P)], dtype='|S{0}'.format(mp.mp.dps))
-        for i, row in enumerate(P):
-            Q[i] = ['{0:.{1}f}'.format(x, mp.mp.dps) for x in row]
-        E, EL = mp.eig(mp.matrix(Q), left=True, right=False)
+    LTOL = ltol  # Lower tolerance level
+    if utol is None:  # Upper tolerance level
+        UTOL = 'inf'
     else:
-        E, EL = mp.eig(mp.matrix(P), left=True, right=False)
+        UTOL = utol
+
+    # E  : a list of length n containing the eigenvalues of A
+    # EL : a matrix whose rows contain the left eigenvectors of A
+    # See: github.com/fredrik-johansson/mpmath/blob/master/mpmath/matrices/eigen.py
+    E, EL = mp.eig(mp.matrix(P), left=True, right=False)
 
     vecs = []
 
     for i, val in enumerate(E):
-        if mp.mpf(1) - mp.mpf(TOL) <= val <= mp.mpf(1) + mp.mpf(TOL):
+        if mp.mpf(1) - mp.mpf(LTOL) <= val <= mp.mpf(1) + mp.mpf(UTOL):
             vec = np.array(EL[i, :].tolist()[0])
             vecs.append(vec/sum(vec))
 
-    if precision:
-        mp.mp.dps = tmp  # Restore the current decimal precision
+    mp.mp.dps = tmp  # Restore the current decimal precision
 
     return vecs

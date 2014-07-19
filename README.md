@@ -97,5 +97,7 @@ which allows arbitrary precision in floating-point arithmetic.
 
 This seems to work very well:
 
-* [Demonstration](http://nbviewer.ipython.org/github/oyamad/test_mc_compute_stationary/blob/master/mc_compute_stationary_mpmath_demo01.ipynb)
-  (with sympy.mpmath)
+* [Demonstration 1](http://nbviewer.ipython.org/github/oyamad/test_mc_compute_stationary/blob/master/mc_compute_stationary_mpmath_demo01.ipynb):
+  sympy.mpmath 0.18
+* [Demonstration 2](http://nbviewer.ipython.org/github/oyamad/test_mc_compute_stationary/blob/master/mc_compute_stationary_mpmath_demo02.ipynb):
+  mpmath 0.19

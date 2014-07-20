@@ -91,6 +91,10 @@ mc_compute_stationary_mpmath.py
 This uses [mpmath](http://mpmath.org),
 which allows arbitrary precision in floating-point arithmetic.
 
+* [Source code](mc_compute_stationary_mpmath.py)
+
+mpmath documentation:
+
 * [Main documentation](http://mpmath.org/doc/current/)
 * [Eigenvalue problem](http://mpmath.org/doc/current/matrices.html#the-eigenvalue-problem)
 * [Setting the precision](http://mpmath.org/doc/current/basics.html#setting-the-precision)

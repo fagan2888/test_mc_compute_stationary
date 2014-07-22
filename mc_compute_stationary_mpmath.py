@@ -28,7 +28,7 @@ def mc_compute_stationary_mpmath(P, precision=17, ltol=0, utol=None):
 
     precision : scalar(int), optional(default: 17)
         Decimal precision in float-point arithemetic with mpmath
-        mp.mp.dps is set to *precision*
+        mpmath.mp.dps is set to *precision*
 
     ltol, utol: scalar(float), optional(default: ltol=0, utol=inf)
         Lower and upper tolerance levels
@@ -36,7 +36,7 @@ def mc_compute_stationary_mpmath(P, precision=17, ltol=0, utol=None):
 
     Returns
     -------
-    vecs : list of numpy.arrays of sympy.mpmath.ctx_mp_python.mpf
+    vecs : list of numpy.arrays of mpmath.ctx_mp_python.mpf
         A list of the eigenvectors of whose eigenvalues in [1-ltol, 1+utol]
 
     Notes

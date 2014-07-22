@@ -77,6 +77,6 @@ def mc_compute_stationary_mpmath(P, precision=17, irreducible=False, ltol=0, uto
                 )
 
         vecs = [np.array((EL[i, :]/sum(EL[i, :])).tolist()[0])
-                for i in range(len(EL)-num_eigval_one, len(EL))]
+                for i in range(EL.rows-num_eigval_one, EL.rows)]
 
     return vecs

@@ -17,27 +17,33 @@ except ImportError:
     sys.exit(1)
 
 
-def mc_compute_stationary_mpmath(P, precision=17, ltol=0, utol=None):
+def mc_compute_stationary_mpmath(P, precision=17, irreducible=False, ltol=0, utol=None):
     """
     Computes the stationary distributions of Markov matrix P.
 
     Parameters
     ----------
     P : array_like(float, ndim=2)
-        A discrete Markov transition matrix
+        A discrete Markov transition matrix.
 
     precision : scalar(int), optional(default: 17)
-        Decimal precision in float-point arithemetic with mpmath
-        mpmath.mp.dps is set to *precision*
+        Decimal precision in float-point arithemetic with mpmath.
+        mpmath.mp.dps is set to *precision*.
 
-    ltol, utol: scalar(float), optional(default: ltol=0, utol=inf)
-        Lower and upper tolerance levels
+    irreducible : bool, optional(default: False)
+        Set True if P is known a priori to be irreducible
+        (for any i, j, (P^k)_{ij} > 0 for some k).
+        If True, the eigenvector for the maximum eigenvalue is returned.
+
+    ltol, utol: scalar(float), optional(default: ltol=0, utol=None)
+        Lower and upper tolerance levels.
         Find eigenvectors for eigenvalues in [1-ltol, 1+utol]
+        (where [1-ltol, 1+utol] = [1-ltol, +inf) when utol=None).
 
     Returns
     -------
     vecs : list of numpy.arrays of mpmath.ctx_mp_python.mpf
-        A list of the eigenvectors of whose eigenvalues in [1-ltol, 1+utol]
+        A list of the eigenvectors of whose eigenvalues in [1-ltol, 1+utol].
 
     Notes
     -----
@@ -62,10 +68,13 @@ def mc_compute_stationary_mpmath(P, precision=17, ltol=0, utol=None):
         # See: github.com/fredrik-johansson/mpmath/blob/master/mpmath/matrices/eigen.py
         E, EL = mp.eig_sort(E, EL)  # Sorted in a descending order
 
-        num_eigval_one = sum(
-            mp.mpf(1) - mp.mpf(LTOL) <= val <= mp.mpf(1) + mp.mpf(UTOL)
-            for val in E
-            )
+        if irreducible:
+            num_eigval_one = 1
+        else:
+            num_eigval_one = sum(
+                mp.mpf(1) - mp.mpf(LTOL) <= val <= mp.mpf(1) + mp.mpf(UTOL)
+                for val in E
+                )
 
         vecs = [np.array((EL[i, :]/sum(EL[i, :])).tolist()[0])
                 for i in range(len(EL)-num_eigval_one, len(EL))]

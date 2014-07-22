@@ -93,12 +93,13 @@ which allows arbitrary precision in floating-point arithmetic.
 
 * [Source code](mc_compute_stationary_mpmath.py)
 
-mpmath documentation:
+mpmath:
 
-* [Table of contents](http://mpmath.org/doc/current/)
-* [Contexts](http://mpmath.org/doc/current/contexts.html)
-* [Eigenvalue problem](http://mpmath.org/doc/current/matrices.html#the-eigenvalue-problem)
-* [Setting the precision](http://mpmath.org/doc/current/basics.html#setting-the-precision)
+* [Source code](https://github.com/fredrik-johansson/mpmath)
+* [Main documentation](http://mpmath.org/doc/current/)
+  * [Contexts](http://mpmath.org/doc/current/contexts.html)
+  * [Eigenvalue problem](http://mpmath.org/doc/current/matrices.html#the-eigenvalue-problem)
+  * [Setting the precision](http://mpmath.org/doc/current/basics.html#setting-the-precision)
 
 This seems to work very well:
 

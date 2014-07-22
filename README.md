@@ -88,14 +88,15 @@ In some cases, this does not work well, returning an empty list...
 mc_compute_stationary_mpmath.py
 ===============================
 
-This uses [mpmath](http://mpmath.org),
+This uses [mpmath](http://mpmath.org) (*version 0.18 or above required*),
 which allows arbitrary precision in floating-point arithmetic.
 
 * [Source code](mc_compute_stationary_mpmath.py)
 
 mpmath documentation:
 
-* [Main documentation](http://mpmath.org/doc/current/)
+* [Table of contents](http://mpmath.org/doc/current/)
+* [Contexts](http://mpmath.org/doc/current/contexts.html)
 * [Eigenvalue problem](http://mpmath.org/doc/current/matrices.html#the-eigenvalue-problem)
 * [Setting the precision](http://mpmath.org/doc/current/basics.html#setting-the-precision)
 

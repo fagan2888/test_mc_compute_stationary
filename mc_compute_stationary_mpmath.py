@@ -46,8 +46,7 @@ def mc_compute_stationary_mpmath(P, precision=17, ltol=0, utol=None):
     References
     ----------
 
-        http://mpmath.org/doc/current/matrices.html#the-eigenvalue-problem
-        http://mpmath.org/doc/current/basics.html#setting-the-precision
+        http://mpmath.org/doc/current
 
     """
     LTOL = ltol  # Lower tolerance level
@@ -56,17 +55,19 @@ def mc_compute_stationary_mpmath(P, precision=17, ltol=0, utol=None):
     else:
         UTOL = utol
 
-    with mp.workdps(precision):  # Temporarily set the working precision
+    with mp.workdps(precision):  # Temporarily change the working precision
         E, EL = mp.eig(mp.matrix(P), left=True, right=False)
         # E  : a list of length n containing the eigenvalues of A
         # EL : a matrix whose rows contain the left eigenvectors of A
         # See: github.com/fredrik-johansson/mpmath/blob/master/mpmath/matrices/eigen.py
+        E, EL = mp.eig_sort(E, EL)  # Sorted in a descending order
 
-    vecs = []
+        num_eigval_one = sum(
+            mp.mpf(1) - mp.mpf(LTOL) <= val <= mp.mpf(1) + mp.mpf(UTOL)
+            for val in E
+            )
 
-    for i, val in enumerate(E):
-        if mp.mpf(1) - mp.mpf(LTOL) <= val <= mp.mpf(1) + mp.mpf(UTOL):
-            vec = np.array(EL[i, :].tolist()[0])
-            vecs.append(vec/sum(vec))
+        vecs = [np.array((EL[i, :]/sum(EL[i, :])).tolist()[0])
+                for i in range(len(EL)-num_eigval_one, len(EL))]
 
     return vecs

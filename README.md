@@ -27,11 +27,11 @@ $ nosetests -v -s
 
 ## IPython Notebooks
 
-* [Outcome 1](http://nbviewer.ipython.org/github/oyamad/test_mc_compute_stationary/blob/master/test_mc_compute_stationary_2_7_6.ipynb):
+* [Outcome 1](http://nbviewer.ipython.org/github/oyamad/test_mc_compute_stationary/blob/master/ipynb/test_mc_compute_stationary_2_7_6.ipynb):
   Python 2.7.6 (installed via Homebrew) on Mac OS X 10.6.8 (Snow Leopard)
-* [Outcome 2](http://nbviewer.ipython.org/github/oyamad/test_mc_compute_stationary/blob/master/test_mc_compute_stationary_2_7_6_anaconda.ipynb):
+* [Outcome 2](http://nbviewer.ipython.org/github/oyamad/test_mc_compute_stationary/blob/master/ipynb/test_mc_compute_stationary_2_7_6_anaconda.ipynb):
   Python 2.7.6 in Anaconda on Mac OS X 10.9.4 (Marvericks)
-* [Outcome 3](http://nbviewer.ipython.org/github/oyamad/test_mc_compute_stationary/blob/master/test_mc_compute_stationary_2_7_8.ipynb):
+* [Outcome 3](http://nbviewer.ipython.org/github/oyamad/test_mc_compute_stationary/blob/master/ipynb/test_mc_compute_stationary_2_7_8.ipynb):
   Python 2.7.8 (installed via Homebrew) on Mac OS X 10.9.4 (Marvericks)
 
 The outputs in general differ across different environment,
@@ -66,11 +66,11 @@ $ python unittest_mc_compute_stationary.py --move='simultaneous' --N=5 --epsilon
 
 ## IPython Notebooks
 
-* [Outcome 1](http://nbviewer.ipython.org/github/oyamad/test_mc_compute_stationary/blob/master/unittest_mc_compute_stationary_2_7_6.ipynb):
+* [Outcome 1](http://nbviewer.ipython.org/github/oyamad/test_mc_compute_stationary/blob/master/ipynb/unittest_mc_compute_stationary_2_7_6.ipynb):
   Python 2.7.6 (installed via Homebrew) on Mac OS X 10.6.8 (Snow Leopard)
-* [Outcome 2](http://nbviewer.ipython.org/github/oyamad/test_mc_compute_stationary/blob/master/unittest_mc_compute_stationary_2_7_6_anaconda.ipynb):
+* [Outcome 2](http://nbviewer.ipython.org/github/oyamad/test_mc_compute_stationary/blob/master/ipynb/unittest_mc_compute_stationary_2_7_6_anaconda.ipynb):
   Python 2.7.6 in Anaconda on Mac OS X 10.9.4 (Marvericks)
-* [Outcome 3](http://nbviewer.ipython.org/github/oyamad/test_mc_compute_stationary/blob/master/unittest_mc_compute_stationary_2_7_8.ipynb):
+* [Outcome 3](http://nbviewer.ipython.org/github/oyamad/test_mc_compute_stationary/blob/master/ipynb/unittest_mc_compute_stationary_2_7_8.ipynb):
   Python 2.7.8 (installed via Homebrew) on Mac OS X 10.9.4 (Marvericks)
 
 
@@ -80,7 +80,7 @@ mc_compute_stationary_sympy.py
 Using `Matrix.eigenvects()` from [SymPy](http://sympy.org),
 it returns (computed) eigenvectors whose (computed) eigenvalues are close to 1.
 
-* [Demonstration](http://nbviewer.ipython.org/github/oyamad/test_mc_compute_stationary/blob/master/mc_compute_stationary_sympy_demo.ipynb)
+* [Demonstration](http://nbviewer.ipython.org/github/oyamad/test_mc_compute_stationary/blob/master/ipynb/mc_compute_stationary_sympy_demo.ipynb)
 
 In some cases, this does not work well, returning an empty list...
 
@@ -103,9 +103,9 @@ mpmath:
 
 This seems to work very well:
 
-* [Demonstration 1](http://nbviewer.ipython.org/github/oyamad/test_mc_compute_stationary/blob/master/mc_compute_stationary_mpmath_demo01.ipynb):
+* [Demonstration 1](http://nbviewer.ipython.org/github/oyamad/test_mc_compute_stationary/blob/master/ipynb/mc_compute_stationary_mpmath_demo01.ipynb):
   sympy.mpmath 0.18
-* [Demonstration 2](http://nbviewer.ipython.org/github/oyamad/test_mc_compute_stationary/blob/master/mc_compute_stationary_mpmath_demo02.ipynb):
+* [Demonstration 2](http://nbviewer.ipython.org/github/oyamad/test_mc_compute_stationary/blob/master/ipynb/mc_compute_stationary_mpmath_demo02.ipynb):
   mpmath 0.19
 
 (The outcomes yielded are exactly the same.)
@@ -113,13 +113,13 @@ This seems to work very well:
 
 ## Manual Unittest
 
-* [Outcome](http://nbviewer.ipython.org/github/oyamad/test_mc_compute_stationary/blob/master/unittest_mc_compute_stationary_mpmath.ipynb):
+* [Outcome](http://nbviewer.ipython.org/github/oyamad/test_mc_compute_stationary/blob/master/ipynb/unittest_mc_compute_stationary_mpmath.ipynb):
   Python 2.7.8 (installed via Homebrew) on Mac OS X 10.9.4 (Marvericks)
 
 
 ## Automated Nose Test
 
-* [Outcome](http://nbviewer.ipython.org/github/oyamad/test_mc_compute_stationary/blob/master/test_mc_compute_stationary_mpmath.ipynb):
+* [Outcome](http://nbviewer.ipython.org/github/oyamad/test_mc_compute_stationary/blob/master/ipynb/test_mc_compute_stationary_mpmath.ipynb):
   Python 2.7.8 (installed via Homebrew) on Mac OS X 10.9.4 (Marvericks)
 
 Passed the tests with tolerance level 1e-17.

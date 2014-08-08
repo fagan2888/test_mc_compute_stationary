@@ -123,3 +123,9 @@ This seems to work very well:
   Python 2.7.8 (installed via Homebrew) on Mac OS X 10.9.4 (Marvericks)
 
 Passed the tests with tolerance level 1e-17.
+
+
+## Update (2014/8/8)
+
+This functionality has been incorporated into the new version of `mc_compute_stationary`
+in [mc_tools.py](https://github.com/jstac/quant-econ/blob/master/quantecon/mc_tools.py).
